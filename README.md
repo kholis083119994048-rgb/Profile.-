@@ -29,4 +29,4 @@ Saya Muhammad Kholis, siswa SMK Tritech Informatika Medan dengan passion di UI/U
 
 ---
 
-> Dibangun dengan ❤️ dan kode gelap.# Profile.-
+> Create by Muhammad Kholis.
