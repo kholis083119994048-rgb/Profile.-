@@ -9,7 +9,7 @@
 Saya Muhammad Kholis, siswa SMK Tritech Informatika Medan dengan passion di UI/UX, dark theme, dan interaksi digital. Portfolio ini adalah kanvas eksperimen saya.
 
 - 📅 Lahir: 01 Juni 2012, Medan
-- 🎓 Pendidikan: SDAL ITTIHADIYAH → SMP-IT Nurul Fadhilah → SMK Tritech Medan
+- 🎓 Pendidikan: SD AL IT-TIHADIYAH → SMP-IT Nurul Fadhilah → SMK Tritech Medan
 
 ---
 
