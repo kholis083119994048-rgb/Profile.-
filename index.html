@@ -1,1 +1,1061 @@
-Portofolio
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muhammad Kholis · Portofolio </title>
+
+    <!-- Font Elegan -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ---------- ROOT VARIABLE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-deep: #0a0a0a;
+            --bg-surface: #121216;
+            --bg-card: rgba(26, 26, 30, 0.65);
+            --border-glass: rgba(255, 255, 255, 0.06);
+            --text-white: #f0f0f4;
+            --text-grey-light: #b8b8be;
+            --text-grey-dim: #6a6a6e;
+            --text-grey-dark: #3a3a3e;
+            --shadow-soft: 0 20px 60px -15px rgba(0, 0, 0, 0.9);
+            --glass-blur: blur(14px);
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text-white);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.7;
+            cursor: default;
+        }
+
+        /* ---------- CANVAS PARTIKEL ---------- */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        /* ---------- WATERMARK ---------- */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-serif);
+            font-size: clamp(60px, 18vw, 200px);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            white-space: nowrap;
+            letter-spacing: 10px;
+            pointer-events: none;
+            z-index: 0;
+            user-select: none;
+            line-height: 1;
+        }
+
+        /* ---------- KONTEN UTAMA ---------- */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-glass);
+            backdrop-filter: var(--glass-blur);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(10, 10, 10, 0.5);
+            transition: 0.4s ease;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-white);
+            text-decoration: none;
+        }
+        .logo span {
+            font-weight: 300;
+            color: var(--text-grey-dim);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-grey-light);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 1.5px;
+            background: var(--text-white);
+            transition: 0.4s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ---------- HERO ---------- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .greeting {
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 5px;
+            color: var(--text-grey-dim);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            position: relative;
+            padding-left: 30px;
+        }
+        .hero .greeting::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 22px;
+            height: 1.5px;
+            background: var(--text-grey-dim);
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(42px, 12vw, 85px);
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 .highlight {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--text-grey-light);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 4px;
+        }
+
+        .hero .sub-badge {
+            font-size: 16px;
+            color: var(--text-grey-dim);
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+        .hero .sub-badge strong {
+            color: var(--text-grey-light);
+            font-weight: 500;
+        }
+
+        #typewriter {
+            font-family: var(--font-serif);
+            font-size: clamp(20px, 3vw, 32px);
+            font-weight: 300;
+            color: var(--text-grey-light);
+            min-height: 65px;
+            border-right: 2px solid var(--text-grey-dim);
+            padding-right: 12px;
+            display: inline-block;
+            width: fit-content;
+            animation: blink-caret 1s step-end infinite;
+            font-style: italic;
+        }
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .hero-desc {
+            max-width: 520px;
+            color: var(--text-grey-dim);
+            font-size: 17px;
+            margin: 24px 0 40px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+        .hero-desc strong {
+            color: var(--text-grey-light);
+            font-weight: 500;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 16px 40px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-family: var(--font-sans);
+        }
+        .btn-primary {
+            background: var(--text-white);
+            color: var(--bg-deep);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.02);
+        }
+        .btn-primary:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px -10px rgba(255, 255, 255, 0.08);
+            background: #ffffff;
+        }
+        .btn-secondary {
+            border-color: var(--text-grey-dim);
+            color: var(--text-grey-light);
+        }
+        .btn-secondary:hover {
+            border-color: var(--text-white);
+            color: var(--text-white);
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* ---------- SEKSI ---------- */
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        section.reveal {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 56px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .section-title .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border-glass), transparent);
+        }
+        .section-title .num {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            font-size: 15px;
+            color: var(--text-grey-dim);
+            letter-spacing: 2px;
+        }
+
+        /* ---------- ABOUT ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .about-text p {
+            color: var(--text-grey-dim);
+            margin-bottom: 20px;
+            font-size: 17px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        .about-text .highlight-text {
+            color: var(--text-white);
+            font-weight: 500;
+        }
+
+        .edu-timeline {
+            margin: 28px 0 32px;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .edu-timeline li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-grey-dim);
+            font-size: 14px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            border-left: 2px solid var(--text-grey-dark);
+            transition: 0.3s;
+            cursor: default;
+        }
+        .edu-timeline li:hover {
+            border-left-color: var(--text-grey-light);
+            background: rgba(255, 255, 255, 0.02);
+            transform: translateX(4px);
+        }
+        .edu-timeline li .badge {
+            font-family: var(--font-serif);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-grey-light);
+            min-width: 50px;
+            letter-spacing: 1px;
+        }
+        .edu-timeline li .detail {
+            color: var(--text-grey-light);
+            font-weight: 400;
+        }
+        .edu-timeline li .detail small {
+            color: var(--text-grey-dim);
+            font-weight: 300;
+            font-size: 12px;
+            display: block;
+        }
+        .edu-timeline li .insta-link {
+            color: var(--text-grey-dim);
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-left: auto;
+        }
+        .edu-timeline li .insta-link:hover {
+            color: var(--text-white);
+            transform: scale(1.1);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-grey-dim);
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-white);
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+        }
+
+        /* ---------- PROYEK ---------- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 36px 30px;
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            box-shadow: var(--shadow-soft);
+            transform-style: preserve-3d;
+            perspective: 800px;
+            cursor: default;
+        }
+        .project-card .card-inner {
+            transform-style: preserve-3d;
+            transition: 0.1s;
+        }
+        .project-card .card-icon {
+            font-size: 32px;
+            color: var(--text-grey-light);
+            margin-bottom: 18px;
+            display: inline-block;
+            opacity: 0.5;
+        }
+        .project-card h3 {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        .project-card p {
+            color: var(--text-grey-dim);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+            font-weight: 300;
+        }
+        .project-card .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .project-card .tech-stack span {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--text-grey-dim);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .project-card:hover {
+            transform: translateY(-16px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+            background: rgba(30, 30, 34, 0.8);
+        }
+
+        /* ---------- KONTAK ---------- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .contact-info h3 {
+            font-family: var(--font-serif);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        .contact-info p {
+            color: var(--text-grey-dim);
+            margin-bottom: 32px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 14px;
+            color: var(--text-grey-dim);
+            transition: 0.3s;
+            text-decoration: none;
+            padding: 12px 16px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+        }
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.04);
+            color: var(--text-white);
+            transform: translateX(8px);
+        }
+        .contact-item i {
+            font-size: 20px;
+            color: var(--text-grey-light);
+            width: 28px;
+            text-align: center;
+            opacity: 0.5;
+        }
+        .contact-item .label {
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--text-grey-dim);
+            min-width: 80px;
+            letter-spacing: 1px;
+        }
+        .contact-item .value {
+            color: var(--text-grey-light);
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .contact-item .value small {
+            color: var(--text-grey-dim);
+            font-weight: 300;
+            font-size: 12px;
+            display: block;
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .contact-social a {
+            color: var(--text-grey-dim);
+            font-size: 24px;
+            transition: 0.3s;
+        }
+        .contact-social a:hover {
+            color: var(--text-white);
+            transform: translateY(-6px);
+        }
+
+        /* ---------- FORM KONTAK YANG SUDAH TERHUBUNG KE EMAIL ---------- */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 6px;
+            color: var(--text-white);
+            font-size: 15px;
+            transition: 0.3s;
+            font-family: var(--font-sans);
+            outline: none;
+            font-weight: 300;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.01);
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+        .contact-form .btn {
+            border: none;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-grey-dim);
+            font-size: 13px;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        footer .heart {
+            color: var(--text-grey-light);
+            margin: 0 4px;
+        }
+
+        /* ---------- RESPONSIF ---------- */
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            .nav-links {
+                gap: 18px;
+                flex-wrap: wrap;
+            }
+            .about-grid,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 44px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .edu-timeline li {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .edu-timeline li .insta-link {
+                margin-left: 0;
+            }
+            .contact-item {
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+            .contact-item .label {
+                min-width: auto;
+            }
+            .watermark {
+                font-size: 50px;
+                opacity: 0.015;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- KANVAS PARTIKEL -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- KONTEN UTAMA -->
+    <div class="container">
+
+        <!-- NAVBAR -->
+        <nav>
+            <a href="#home" class="logo">Kholis<span>·dev</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Karya</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="watermark">Muhammad Kholis</div>
+
+            <div class="greeting"> Perkenalan</div>
+            <h1>
+                Muhammad<br />
+                <span class="highlight">Kholis</span>
+            </h1>
+            <div class="sub-badge">
+                <i class="fas fa-graduation-cap" style="opacity:0.4; margin-right:8px;"></i>
+                <strong>SMK Tritech Informatika Medan</strong> · Lahir 01 Juni 2012 · Medan
+            </div>
+            <div id="typewriter"></div>
+            <p class="hero-desc">
+                Merangkai antarmuka yang tenang dan bermakna. Menggabungkan <strong>estetika monokrom</strong>
+                dengan interaksi yang halus. Setiap baris kode adalah cerita dari perjalanan pendidikan saya.
+            </p>
+            <div class="btn-group">
+                <a href="#projects" class="btn btn-primary"><i class="fas fa-book-open"></i> Lihat Karya</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-feather-alt"></i> Hubungi</a>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-title">
+                <span class="num">01</span> Tentang Saya
+                <span class="line"></span>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        Saya <span class="highlight-text">Muhammad Kholis</span>, seorang pelajar di
+                        <span class="highlight-text">SMK Tritech Informatika Medan</span> yang percaya bahwa desain adalah
+                        bahasa universal. Saya menyukai keseimbangan antara <span class="highlight-text">kegelapan dan cahaya</span>
+                        dalam setiap antarmuka yang saya bangun.
+                    </p>
+                    <p>
+                        Portfolio ini adalah kanvas saya—tempat eksperimen visual bertemu dengan
+                        kode yang terstruktur. Perjalanan pendidikan saya dimulai dari Medan, terus
+                        berkembang hingga saat ini di bangku SMK.
+                    </p>
+
+                    <ul class="edu-timeline">
+                        <li>
+                            <span class="badge">SD</span>
+                            <span class="detail">
+                                SD AL IT-TIHADIYAH
+                                <small>Jl. Mesjid No. 21, Laut Dendang, Percut Sei Tuan, Deli Serdang</small>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="badge">SMP</span>
+                            <span class="detail">
+                                SMP-IT Nurul Fadhilah
+                                <small>Jl. Pembangunan, Dusun III, Bandar Setia, Percut Sei Tuan, Deli Serdang</small>
+                            </span>
+                            <a href="https://www.instagram.com/smpit_nurulfadhilah" target="_blank" class="insta-link" aria-label="Instagram SMP">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="badge">SMK</span>
+                            <span class="detail">
+                                SMK Tritech Informatika Medan
+                                <small>Jl. Bhayangkara No. 484, Indra Kasih, Medan Tembung, Medan</small>
+                            </span>
+                            <a href="https://www.instagram.com/smk_tritech_informatika" target="_blank" class="insta-link" aria-label="Instagram SMK">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="skills">
+                        <span class="skill-tag">HTML / CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">UI/UX</span>
+                        <span class="skill-tag">Canvas</span>
+                        <span class="skill-tag">Monokrom</span>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; justify-content:center; background: radial-gradient(circle at center, rgba(255,255,255,0.015), transparent 70%); border-radius:12px; border:1px solid rgba(255,255,255,0.02); padding:30px; text-align:center; font-size:70px; color:rgba(255,255,255,0.04);">
+                    <i class="fas fa-feather"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYEK -->
+        <section id="projects">
+            <div class="section-title">
+                <span class="num">02</span> Karya Unggulan
+                <span class="line"></span>
+            </div>
+            <div class="project-grid">
+
+                <div class="project-card" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                        <h3>Villain Calc</h3>
+                        <p>Kalkulator monokrom dengan sentuhan dramatis. Tombol bereaksi seperti tuas kuno.</p>
+                        <div class="tech-stack">
+                            <span>HTML</span><span>CSS</span><span>Audio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon"><i class="fas fa-scroll"></i></div>
+                        <h3>Nexus Protocol</h3>
+                        <p>Kerangka kerja kolaboratif yang mengubah AI menjadi mitra kreatif yang setara.</p>
+                        <div class="tech-stack">
+                            <span>AI</span><span>Prompt</span><span>UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-tilt>
+                    <div class="card-inner">
+                        <div class="card-icon"><i class="fas fa-chess-queen"></i></div>
+                        <h3>Monochrome UI</h3>
+                        <p>Sistem desain modular bertema abu-abu dengan fokus pada tipografi dan ruang kosong.</p>
+                        <div class="tech-stack">
+                            <span>CSS</span><span>Grid</span><span>Type</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- KONTAK -->
+        <section id="contact">
+            <div class="section-title">
+                <span class="num">03</span> Hubungi Saya
+                <span class="line"></span>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Mari Terhubung</h3>
+                    <p>
+                        Saya selalu terbuka untuk proyek menarik, diskusi desain, atau sekadar berbagi
+                        cerita. Jangan ragu untuk menyapa.
+                    </p>
+
+                    <a href="https://wa.me/6283179189956" target="_blank" class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="label">WhatsApp</span>
+                        <span class="value">0831-7918-9956 <small>Klik untuk chat</small></span>
+                    </a>
+
+                    <a href="mailto:kholism983@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span class="label">Email</span>
+                        <span class="value">kholism983@gmail.com</span>
+                    </a>
+
+                    <a href="https://instagram.com/kholis_dcws" target="_blank" class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <span class="label">Instagram</span>
+                        <span class="value">@kholis_dcws</span>
+                    </a>
+
+                    <a href="https://discord.com/invite/dwVcjVn8j" target="_blank" class="contact-item">
+                        <i class="fab fa-discord"></i>
+                        <span class="label">Discord</span>
+                        <span class="value">Bergabunglah <small>Klik untuk invite</small></span>
+                    </a>
+
+                    <div class="contact-social">
+                        <a href="https://instagram.com/kholis_dcws" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/6283179189956" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:kholism983@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="https://discord.com/invite/dwVcjVn8j" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <!-- ============= FORM YANG SUDAH TERHUBUNG KE EMAIL ============= -->
+                <form action="https://formsubmit.co/renitriana735@gmail.com" method="POST" class="contact-form">
+                    <!-- Input tersembunyi agar email terformat rapi -->
+                    <input type="hidden" name="_subject" value="Pesan dari Portofolio Kholis">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="hidden" name="_next" value="https://kholis-portfolio.com/thanks.html"> <!-- opsional, ganti dengan link sukses -->
+
+                    <input type="text" name="nama" placeholder="Nama / Alias" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                    <textarea name="pesan" placeholder="Tulis pesanmu..." required></textarea>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-feather"></i> Kirim</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2026 · <strong>Muhammad Kholis</strong> · SMK Tritech Informatika Medan · Dibangun dengan <span class="heart">♡</span> dan kode</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // ============================================================
+        //  1. PARTIKEL (DEBU BINTANG ABU-ABU)
+        // ============================================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        let particles = [];
+        const MOUSE = { x: null, y: null, radius: 140 };
+
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.15;
+                this.speedY = (Math.random() - 0.5) * 0.15;
+                this.opacity = Math.random() * 0.4 + 0.05;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (MOUSE.x !== null) {
+                    const dx = this.x - MOUSE.x;
+                    const dy = this.y - MOUSE.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < MOUSE.radius) {
+                        const force = (MOUSE.radius - dist) / MOUSE.radius;
+                        const angle = Math.atan2(dy, dx);
+                        const pushX = Math.cos(angle) * force * 1.0;
+                        const pushY = Math.sin(angle) * force * 1.0;
+                        this.x += pushX;
+                        this.y += pushY;
+                    }
+                }
+
+                if (this.x > w) this.x = 0;
+                if (this.x < 0) this.x = w;
+                if (this.y > h) this.y = 0;
+                if (this.y < 0) this.y = h;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                const grey = 180 + Math.random() * 75;
+                ctx.fillStyle = `rgba(${grey}, ${grey}, ${grey}, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles(count = 100) {
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, w, h);
+            for (const p of particles) {
+                p.update();
+                p.draw();
+            }
+            // Garis penghubung
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 100) {
+                        const opacity = (1 - dist / 100) * 0.03;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(200, 200, 200, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        window.addEventListener('mousemove', (e) => {
+            MOUSE.x = e.clientX;
+            MOUSE.y = e.clientY;
+        });
+        window.addEventListener('mouseleave', () => {
+            MOUSE.x = null;
+            MOUSE.y = null;
+        });
+
+        // ============================================================
+        //  2. TYPEWRITER
+        // ============================================================
+        const typewriterEl = document.getElementById('typewriter');
+        const texts = [
+            'Bercerita melalui kode',
+            'Merangkai antarmuka',
+            'Menghidupkan kegelapan',
+            'Siswa & Kreator'
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 70;
+
+        function typeEffect() {
+            const current = texts[textIndex];
+            if (!isDeleting) {
+                typewriterEl.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === current.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2800);
+                    return;
+                }
+                setTimeout(typeEffect, typeSpeed);
+            } else {
+                typewriterEl.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % texts.length;
+                    setTimeout(typeEffect, 500);
+                    return;
+                }
+                setTimeout(typeEffect, typeSpeed / 1.6);
+            }
+        }
+        typeEffect();
+
+        // ============================================================
+        //  3. SCROLL REVEAL
+        // ============================================================
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        sections.forEach(s => observer.observe(s));
+
+        // ============================================================
+        //  4. 3D TILT PADA KARTU
+        // ============================================================
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                card.style.transform =
+                    `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px) scale(1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
+            });
+        });
+
+        // ============================================================
+        //  5. NAVBAR AUTO HIDE
+        // ============================================================
+        const nav = document.querySelector('nav');
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const current = window.scrollY;
+            if (current > lastScroll && current > 80) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            lastScroll = current;
+        });
+        nav.addEventListener('mouseenter', () => {
+            nav.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>
